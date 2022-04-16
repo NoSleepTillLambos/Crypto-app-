@@ -1,23 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import {useEffect} from "react";
+import Axios from "axios";
+
 
 function App() {
+
+    useEffect(() =>{
+      Axios.get("https://api.coinstats.app/public/v1/coins?skip=0&limit=5&currency=EUR")
+      .then((res) => {
+        console.log(res.data)
+      })
+    },[])
+
   return (
+
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="crypto-header"></div>
+      <div className="crypto-display"></div>
     </div>
   );
 }
